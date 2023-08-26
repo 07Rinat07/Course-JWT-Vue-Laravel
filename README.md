@@ -1,61 +1,71 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
-
 <p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-## About Laravel
+<div align="center">
+<a href="https://vuejs.org/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/vuejs-original-wordmark.svg" alt="Vue.js" height="50" /></a>
+</div>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Brief instructions for installing and configuring the educational project
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+* composer create-project laravel/laravel:^8.0 example-app
+* In file .env input value and setting database
+* php artisan migrate
+* composer require laravel/ui
+* php artisan ui:auth
+* php artisan ui bootstrap
+* php artisan ui vue
+* npm update vue-loader
+* npm run dev
+* php artisan serve
+* npm run watch (each change starts the build automatically)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Additional actions in case of errors...
 
-## Learning Laravel
+* php artisan route:cache
+* php artisan route:clear
+* php artisan config:clear
+* php artisan cache:clear
+* php artisan optimize
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### For tests:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+* cp .env .env.testing
+* php artisan make:test TicketTest --unit
+* php artisan migrate --seed --env=testing
+* php artisan migrate:refresh --seed --env=testing
+* composer dump-autoload
+* php artisan test
 
-## Laravel Sponsors
+### Package.json for install mix & start project:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+{
+"private": true,
+"scripts": {
+"dev": "npm run development",
+"development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress
+--config=node_modules/laravel-mix/setup/webpack.config.js",
+"watch": "npm run development -- --watch",
+"watch-poll": "npm run watch -- --watch-poll",
+"hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot
+--disable-host-check --config=node_modules/laravel-mix/setup/webpack.config.js",
+"prod": "npm run production",
+"production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress
+--config=node_modules/laravel-mix/setup/webpack.config.js"
+},
+"devDependencies": {
+"@popperjs/core": "^2.10.2",
+"axios": "^0.19",
+"bootstrap": "^5.1.3",
+"cross-env": "^7.0",
+"laravel-mix": "^6.0.10",
+"lodash": "^4.17.19",
+"resolve-url-loader": "^3.1.2",
+"sass": "^1.32.11",
+"sass-loader": "^10.4.1",
+"vue": "^2.6.12",
+"vue-loader": "^15.2.2",
+"vue-router": "^3.5.3",
+"vue-template-compiler": "^2.6.12"
+}
+}
