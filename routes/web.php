@@ -19,3 +19,6 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [IndexController::class, '__invoke'])->where('page', '.*');
+
+
+

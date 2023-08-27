@@ -22,6 +22,11 @@ export default  {
             password_confirmation: null,
         }
     },
+
+    mounted() {
+
+    },
+
     methods: {
         store() {
             axios.post('/api/users', {name: this.name, email: this.email, password: this.password, password_confirmation: this.password_confirmation})
