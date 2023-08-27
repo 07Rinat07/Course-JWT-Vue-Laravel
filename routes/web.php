@@ -18,7 +18,12 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', [IndexController::class, '__invoke'])->where('page', '.*');
+
+Route::get('/{any}',[IndexController::class, '__invoke'])->where('any','.*');
+// все переадресовывает на вью роутер
+
+
+//Route::get('/', [IndexController::class, '__invoke'])->where('page', '.*');
 
 
 
