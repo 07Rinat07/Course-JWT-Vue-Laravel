@@ -18,19 +18,26 @@ __webpack_require__.r(__webpack_exports__);
       name: null,
       email: null,
       password: null,
-      password_confirmation: null
+      password_confirmation: null,
+      error: null
     };
   },
   mounted: function mounted() {},
   methods: {
     store: function store() {
+      var _this = this;
       axios.post('/api/users', {
         name: this.name,
         email: this.email,
         password: this.password,
         password_confirmation: this.password_confirmation
       }).then(function (res) {
-        console.log(res);
+        localStorage.setItem('access_token', res.data.access_token);
+        _this.$router.push({
+          name: 'user.personal'
+        });
+      })["catch"](function (error) {
+        _this.error = error.response.data.error;
       });
     }
   }
@@ -149,7 +156,9 @@ var render = function render() {
         return _vm.store.apply(null, arguments);
       }
     }
-  })]);
+  }), _vm._v(" "), _vm.error ? _c("div", {
+    staticClass: "text-danger"
+  }, [_vm._v(_vm._s(_vm.error))]) : _vm._e()]);
 };
 var staticRenderFns = [];
 render._withStripped = true;
