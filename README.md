@@ -27,12 +27,3 @@
 * php artisan config:clear
 * php artisan cache:clear
 * php artisan optimize
-
-### For tests:
-
-* cp .env .env.testing
-* php artisan make:test TicketTest --unit
-* php artisan migrate --seed --env=testing
-* php artisan migrate:refresh --seed --env=testing
-* composer dump-autoload
-* php artisan test

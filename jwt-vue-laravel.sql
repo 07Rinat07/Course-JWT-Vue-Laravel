@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost:3306
--- Время создания: Авг 26 2023 г., 16:08
+-- Время создания: Авг 28 2023 г., 18:08
 -- Версия сервера: 5.7.43
 -- Версия PHP: 7.4.3
 
@@ -116,7 +116,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'admintest@gmail.com', NULL, '$2y$10$SxYCfHTWdR1M1HE6vM7TreiSP2m3XRUA.vHhCZjLFuOmgilTEfePC', NULL, '2023-08-26 10:15:39', '2023-08-26 10:15:39');
+(1, 'Admin', 'admintest1@gmail.com', NULL, '$2y$10$SxYCfHTWdR1M1HE6vM7TreiSP2m3XRUA.vHhCZjLFuOmgilTEfePC', NULL, '2023-08-26 10:15:39', '2023-08-26 10:15:39'),
+(2, 'test', 'test@mail.ru', NULL, '$2y$10$OuCRsR9V5dbdfvrZRwibNeSWboASdJqyjLZx5y7.XGh0BfR81HW8W', NULL, '2023-08-28 12:33:37', '2023-08-28 12:33:37');
 
 --
 -- Индексы сохранённых таблиц
@@ -180,7 +181,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
