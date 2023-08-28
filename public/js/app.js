@@ -4810,7 +4810,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "Index"
+  name: "Index",
+  data: function data() {
+    return {
+      accessToken: null
+    };
+  },
+  mounted: function mounted() {
+    this.getAccessToken();
+  },
+  updated: function updated() {
+    this.getAccessToken();
+  },
+  methods: {
+    getAccessToken: function getAccessToken() {
+      this.accessToken = localStorage.getItem('access_token');
+    }
+  }
 });
 
 /***/ }),
@@ -4836,25 +4852,25 @@ var render = function render() {
         name: "fruit.index"
       }
     }
-  }, [_vm._v("List")]), _vm._v(" "), _c("router-link", {
+  }, [_vm._v("List")]), _vm._v(" "), !_vm.accessToken ? _c("router-link", {
     attrs: {
       to: {
         name: "user.login"
       }
     }
-  }, [_vm._v("Login")]), _vm._v(" "), _c("router-link", {
+  }, [_vm._v("Login")]) : _vm._e(), _vm._v(" "), !_vm.accessToken ? _c("router-link", {
     attrs: {
       to: {
         name: "user.registration"
       }
     }
-  }, [_vm._v("Registration")]), _vm._v(" "), _c("router-link", {
+  }, [_vm._v("Registration")]) : _vm._e(), _vm._v(" "), _vm.accessToken ? _c("router-link", {
     attrs: {
       to: {
         name: "user.personal"
       }
     }
-  }, [_vm._v("Personal")]), _vm._v(" "), _c("router-view")], 1);
+  }, [_vm._v("Personal")]) : _vm._e(), _vm._v(" "), _c("router-view")], 1);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -4942,8 +4958,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
-  mode: "history",
+var route = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
+  mode: 'history',
   routes: [{
     path: '/fruits',
     component: function component() {
@@ -4968,8 +4984,33 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vue_router__WEBPACK_IMPORTED_MOD
       return __webpack_require__.e(/*! import() */ "resources_js_components_User_Personal_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/User/Personal.vue */ "./resources/js/components/User/Personal.vue"));
     },
     name: 'user.personal'
+  }, {
+    path: '*',
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ "resources_js_components_User_Personal_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/User/Personal.vue */ "./resources/js/components/User/Personal.vue"));
+    },
+    name: '404'
   }]
-}));
+});
+route.beforeEach(function (to, from, next) {
+  var accessToken = localStorage.getItem('access_token');
+  if (!accessToken) {
+    if (to.name === 'user.login' || to.name === 'user.registration') {
+      return next();
+    } else {
+      return next({
+        name: 'user.login'
+      });
+    }
+  }
+  if (to.name === 'user.login' && accessToken) {
+    return next({
+      name: 'user.personal'
+    });
+  }
+  next();
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (route);
 
 /***/ }),
 
